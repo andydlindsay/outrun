@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Favicon from 'react-favicon';
+import Gameboard from './Gameboard.jsx';
 
 class App extends Component {
 
@@ -7,9 +8,10 @@ class App extends Component {
     return (
       <Fragment>
         <Favicon url="./build/favicon.ico" />
+        <Gameboard />
       </Fragment>
     );
   }
-  
+
 }
 export default App;

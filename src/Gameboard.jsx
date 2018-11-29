@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import Cell from './Cell.jsx';
 
 class Gameboard extends Component {
 
@@ -6,6 +7,7 @@ class Gameboard extends Component {
         return (
             <Fragment>
                 <h2>Gameboard</h2>
+                <Cell />
             </Fragment>
         );
     }

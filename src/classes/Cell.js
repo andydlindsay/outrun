@@ -5,10 +5,11 @@ class Cell {
         this.distToPlayer = undefined;
         this.x = x;
         this.y = y;
+        this.entity = undefined;
     }
 
     get isPassable() {
-        return this.type === 'f';
+        return (this.type === 'f');
     }
 
 }

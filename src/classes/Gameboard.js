@@ -1,6 +1,5 @@
-// import Cell from './Cell.js';
 const Cell = require('./Cell.js');
-const { levelString, betterLevel } = require('../data/levels.js');
+const Player = require('./Player.js');
 
 class Gameboard {
 
@@ -9,6 +8,19 @@ class Gameboard {
         this.width;
         this.height;
         this.boardState;
+    }
+
+    getRandomStartingCell() {
+        let cell;
+        while (!cell) {
+            const testX = Math.floor(Math.random() * this.width);
+            const testY = Math.floor(Math.random() * this.height);
+            const testCell = this.boardState[testX][testY];
+            if (testCell && testCell.isPassable && !testCell.isOccupied) {
+                cell = testCell;
+            }
+        }
+        return cell;
     }
 
     makeGameboard(levelString) {
@@ -76,13 +88,10 @@ class Gameboard {
 
         this.resetPathingValues();
 
-        let neighbours = [];
+        let neighbours = [this.boardState[playerX][playerY]];
         let dist = 0;
-        this.boardState[playerX][playerY].distToPlayer = dist;
-        neighbours = neighbours.concat(this.getNodeNeighbours(playerX, playerY));
 
         while (neighbours.length > 0) {
-            dist++;
             let newNeighbours = [];
             neighbours.forEach((cell) => {
                 if (cell.isPassable && cell.distToPlayer === undefined) {
@@ -96,6 +105,7 @@ class Gameboard {
                 return cell;
             });
             neighbours = newNeighbours;
+            dist++;
         }
 
     }
@@ -115,22 +125,16 @@ class Gameboard {
         for (var y = 0; y < this.height; y++) {
             for (var x = 0; x < this.width; x++) {
                 const cell = this.boardState[x][y];
-                process.stdout.write(cell.type);
-                process.stdout.write('' + (cell.distToPlayer === undefined ? '' : cell.distToPlayer));
-                process.stdout.write((cell.distToPlayer === undefined ? "  " : " "));
+                // process.stdout.write(cell.isPassable || cell.entity ? ' ' : cell.type);
+                process.stdout.write(cell.entity ? (cell.entity instanceof Player ? ' H ' : ' M ') : cell.isPassable && !cell.entity ? '   ' : cell.type === 'w' ? '███' : '░░░');
+                // process.stdout.write();
+                // process.stdout.write('' + (cell.distToPlayer === undefined ? '' : cell.distToPlayer));
+                // process.stdout.write(" ");
             }
-            console.log('\n')
+            console.log('');
         }
     }
 
 }
 
-const board = new Gameboard({ levelString });
-board.generatePathingValues(9, 10);
-board.print();
-
-const b2 = new Gameboard({ levelString: betterLevel });
-b2.generatePathingValues(4, 4);
-b2.print();
-b2.generatePathingValues(2, 1);
-b2.print();
+module.exports = Gameboard;

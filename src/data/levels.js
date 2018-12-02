@@ -1,4 +1,6 @@
-module.exports.levelString = `
+const levels = {};
+
+levels.levelOne = `
 nwwwwwnwwwwwwwwwwwwwwnnnnnwwwww
 wwfffwwwffffffffwwffwnwwwnwfffw
 wfffffwwfffwwwffffffwwwfwwwwffw
@@ -31,11 +33,51 @@ nnwwfffffwwnwwfffffwwwfffwwwffw
 nnnwwwwwwwnnnwwwwwwwnwwwwwnwwww
 `;
 
-module.exports.betterLevel = `
-fwfwfww
-fwfwfff
-fwfffff
-fffwffw
-wwfwfww
-fffwwww
+levels.levelTwo = `
+fwfwfwwww
+fwfwffffw
+fwfwffwfw
+fffwffwfw
+wwfffwwfw
+fffwwwwfw
 `;
+
+levels.levelThree = `
+wwwwwwwwwwww
+wffffffffffw
+wfwwwffwwwfw
+wfwwwffwwwfw
+wffffffffffw
+wffffffffffw
+wfwwwffwwwfw
+wfwwwffwwwfw
+wffffffffffw
+wwwwwwwwwwww
+`;
+
+levels.levelFour = `
+nwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+nwwffwwfffffffwffffffffwwwffffw
+nwfffwwffffwwffffffwwwffwwwfffw
+nwffwwwwfwwwwfffffwwnwfffwfffww
+nwffwwwffwnnwfffwfwwwwwwfwffwwn
+nwffffwfwwwwwwfwwfwwfwwwfffwwnn
+nwffwfffwnwffffwffwffffffwffwnn
+nwffwwwwwnwfwwwwffffwwffwwffwnn
+nwwffffwnnwffwwwwwwffwwwwffwwnn
+nnwwwwfwnnwwffffwwwwffffffwwwww
+nnwwwffwwwwwwfwffwwwffffffffffw
+nnwfffwwffffffwfffwwwwffffwwffw
+nnwfwwwffwfwwwwfwffwwwffffwwwww
+nwwffwwfwwffwwwwwwfwwffffwwwnnn
+wwffffwfwwwfffffwffffffwfffwwnn
+wffffwwffwwwffwfffwwwwfwwffwwnn
+wwfffwwwffwwwffffwwwwffwwwffwww
+nwffwwnwwffwfffffffwwfwwwwwfffw
+nwfffwwwffffffwwfffwffffffwwffw
+nwwfffwwffwwwffffffwffffffwwwfw
+nnwwfffffwwnwwfffffwwwfffwwwffw
+nnnwwwwwwwnnnwwwwwwwnwwwwwnwwww
+`;
+
+module.exports = levels;

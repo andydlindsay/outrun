@@ -1,8 +1,8 @@
 class Entity {
 
-    constructor({ x, y, cell }) {
-        this.x = x;
-        this.y = y;
+    constructor({ cell }) {
+        this.x = cell.x;
+        this.y = cell.y;
         this.cell = cell;
     }
 
@@ -77,6 +77,13 @@ class Entity {
                 }
                 break;
         }
+    }
+
+    wander(boardState) {
+
+        const moves = [ 'up', 'down', 'left', 'right', 'upAndLeft', 'upAndRight', 'downAndLeft', 'downAndRight' ];
+        this.move(boardState, moves[Math.floor(Math.random() * moves.length)]);
+
     }
 
 }

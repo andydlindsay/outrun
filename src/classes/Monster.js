@@ -2,6 +2,11 @@ const Entity = require('./Entity.js');
 
 class Monster extends Entity {
 
+    constructor(props) {
+        super(props);
+        this.type = 'z';
+    }
+
     monsterMove(nodeNeighbours) {
 
         const possibleMoves = [];

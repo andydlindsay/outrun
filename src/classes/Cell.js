@@ -9,7 +9,11 @@ class Cell {
     }
 
     get isPassable() {
-        return (this.type === 'f');
+        return this.type === 'f';
+    }
+
+    get isOccupied() {
+        return this.entity !== undefined;
     }
 
 }

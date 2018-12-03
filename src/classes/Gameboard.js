@@ -2,6 +2,14 @@ const Cell = require('./Cell.js');
 const Player = require('./Player.js');
 const Monster = require('./Monster.js');
 
+function setTimeoutLoop(numLoops, waitTime, callback) {
+    let i = 1;
+    while (i <= numLoops) {
+        setTimeout(callback, waitTime * i);
+        i++;
+    }
+}
+
 class Gameboard {
 
     constructor(levelString) {
@@ -12,6 +20,22 @@ class Gameboard {
         this.player;
         this.monsters = [];
         return this;
+    }
+
+    singleLoop(board) {
+        board.player.wander(board.boardState);
+        board.generatePathingValues(board.player.cell.x, board.player.cell.y)
+            .moveMonsters()
+            .print();
+    }
+
+    startGame(numLoops, loopLength, numMonsters) {
+
+        this.generatePlayerStart()
+            .generatePathingValues(this.player.cell.x, this.player.cell.y)
+            .generateMonsters(numMonsters, true);
+        setTimeoutLoop(numLoops, loopLength, () => { this.singleLoop(this) });
+
     }
 
     getRandomStartingCell(isFarFromPlayer) {
